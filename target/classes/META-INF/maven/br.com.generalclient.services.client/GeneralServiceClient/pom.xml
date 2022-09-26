@@ -36,6 +36,26 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-wsdl2code-maven-plugin</artifactId>
+				<version>1.6.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsdl2code</goal>
+						</goals>
+						<configuration>
+							<unpackClasses>true</unpackClasses>
+							<databindingName>xmlbeans</databindingName>
+							<packageName>br.com.correios.ws</packageName>
+							<wsdlFile>src/main/resources/wsdl/AtendeCliente.wsdl</wsdlFile>
+							<syncMode>sync</syncMode>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	
