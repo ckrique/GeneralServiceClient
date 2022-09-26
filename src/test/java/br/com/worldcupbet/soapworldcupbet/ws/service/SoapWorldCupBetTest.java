@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.worldcupbet.soapworldcupbet.services.AddBetDocument;
+import br.com.worldcupbet.soapworldcupbet.services.AddBetDocument.AddBet;
 import br.com.worldcupbet.soapworldcupbet.services.DeleteDocument;
 import br.com.worldcupbet.soapworldcupbet.services.UpdateBetDocument;
 
@@ -73,13 +74,13 @@ public class SoapWorldCupBetTest {
 		}
 	}
 
-	/*
+	
 	@Test
-	public void testAddHighScore() {
+	public void testAddBet() {
 		
-		HighScoreServiceStub stub = null;
+		WorldCupBetServiceStub stub = null;
 		try {
-			stub = new HighScoreServiceStub();
+			stub = new WorldCupBetServiceStub();
 		} catch (AxisFault e) {
 			e.printStackTrace();
 			Assert.fail();
@@ -87,108 +88,68 @@ public class SoapWorldCupBetTest {
 
 		Assert.assertNotNull(stub);
 
-		AddHighScoreDocument requestDoc = AddHighScoreDocument.Factory.newInstance();
+		AddBetDocument requestDoc = AddBetDocument.Factory.newInstance();
 
-		AddHighScore request = AddHighScore.Factory.newInstance();
+		AddBet request = AddBet.Factory.newInstance();
 
-		HighScore newHighScore = HighScore.Factory.newInstance();
-		newHighScore.setNickname("Pedro");
-		newHighScore.setScore(1000);
+		Bet newBet = Bet.Factory.newInstance();
+		newBet.setPunterName("Camila");
+		newBet.setBetValue(1030);
+		newBet.setTeamOnWhichBet("Irâ");
 
-		request.setScore(newHighScore);
+		request.setBet(newBet);
 
-		requestDoc.setAddHighScore(request);
+		requestDoc.setAddBet(request);
 
 		try {
-			stub.addHighScore(requestDoc);
+			stub.addBet(requestDoc);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
-
+		
 		Assert.assertTrue(true);
-	}
-
-	@Test
-	public void testGetHighScoresForNickname() {
-		
-		HighScoreServiceStub stub = null;
-		try {
-			stub = new HighScoreServiceStub();
-		} catch (AxisFault e) {
-			e.printStackTrace();
-			Assert.fail();
-		}
-
-		Assert.assertNotNull(stub);
-
-		GetHighScoresForNickNameDocument requestDoc = GetHighScoresForNickNameDocument.Factory.newInstance();
-		
-		GetHighScoresForNickName request = GetHighScoresForNickName.Factory.newInstance();
-		
-		request.setNickName("person3");
-		
-		requestDoc.setGetHighScoresForNickName(request);
-		
-		GetHighScoresForNickNameResponseDocument responseDoc = null;
-		try {
-			responseDoc = stub.getHighScoresForNickName(requestDoc);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			Assert.fail();
-		}
-		
-		Assert.assertNotNull(responseDoc);
-		
-		GetHighScoresForNickNameResponse response = responseDoc.getGetHighScoresForNickNameResponse();
-		
-		Assert.assertNotNull(response);
-		
-		HighScore[] result = response.getReturnArray();
-		
-		Assert.assertNotNull(result);
-		Assert.assertTrue(result.length > 0);
-		
-		for (HighScore hs : result) {
-			System.out.println(hs.getNickname() + " scores " + hs.getScore());
-		}
 	}
 	
 	@Test
-	public void getHighScoresSize() {
-		HighScoreServiceStub stub = null;
+	public void testGetHighScoresForNickname() {
+		
+		WorldCupBetServiceStub stub = null;
 		try {
-			stub = new HighScoreServiceStub();
+			stub = new WorldCupBetServiceStub();
 		} catch (AxisFault e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 
 		Assert.assertNotNull(stub);
+
+		GetByPunterNameDocument requestDoc = GetByPunterNameDocument.Factory.newInstance();
 		
-		GetHighScoreSizeDocument requestDoc = GetHighScoreSizeDocument.Factory.newInstance();
+		GetByPunterName request = GetByPunterName.Factory.newInstance();
 		
-		GetHighScoreSize request = GetHighScoreSize.Factory.newInstance();
+		request.setPunterName("Dickson");
 		
-		requestDoc.setGetHighScoreSize(request);				
+		requestDoc.setGetByPunterName(request);
 		
-		GetHighScoreSizeResponseDocument responseDoc = null;
+		GetByPunterNameResponseDocument responseDoc = null;
 		try {
-			responseDoc = stub.getHighScoreSize(requestDoc);
-		} catch (RemoteException e) {			
+			responseDoc = stub.getByPunterName(requestDoc);
+		} catch (RemoteException e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 		
 		Assert.assertNotNull(responseDoc);
 		
-		GetHighScoreSizeResponse response = responseDoc.getGetHighScoreSizeResponse();
+		GetByPunterNameResponse response = responseDoc.getGetByPunterNameResponse();
 		
 		Assert.assertNotNull(response);
 		
-		Assert.assertTrue(response.getReturn() > 0);
+		Bet result = response.getReturn();
 		
-		System.out.println("There is "+response.getReturn()+" highscores on the list.");
+		Assert.assertNotNull(result);
+		
+		Assert.assertTrue(result.getPunterName().equals("Dickson"));
 	}
-	*/
 }
