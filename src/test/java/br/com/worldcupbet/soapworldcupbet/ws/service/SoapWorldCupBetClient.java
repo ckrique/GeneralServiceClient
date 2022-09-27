@@ -1,14 +1,15 @@
 package br.com.worldcupbet.soapworldcupbet.ws.service;
 
-
 import java.rmi.RemoteException;
 
 import org.apache.axis2.AxisFault;
-import org.junit.Assert;
-import org.junit.Test;
 
 import br.com.worldcupbet.soapworldcupbet.services.AddBetDocument;
 import br.com.worldcupbet.soapworldcupbet.services.AddBetDocument.AddBet;
+import br.com.worldcupbet.soapworldcupbet.services.DeleteDocument.Delete;
+import br.com.worldcupbet.soapworldcupbet.services.DeleteDocument;
+import br.com.worldcupbet.soapworldcupbet.services.UpdateBetDocument;
+import br.com.worldcupbet.soapworldcupbet.services.UpdateBetDocument.UpdateBet;
 
 import br.com.worldcupbet.soapworldcupbet.services.GetBetsDocument;
 import br.com.worldcupbet.soapworldcupbet.services.GetBetsDocument.GetBets;
@@ -20,22 +21,19 @@ import br.com.worldcupbet.soapworldcupbet.services.GetByPunterNameDocument.GetBy
 import br.com.worldcupbet.soapworldcupbet.services.GetByPunterNameResponseDocument;
 import br.com.worldcupbet.soapworldcupbet.services.GetByPunterNameResponseDocument.GetByPunterNameResponse;
 import br.com.worldcupbet.soapworldcupbet.services.xsd.Bet;
+import br.com.worldcupbet.soapworldcupbet.ws.WorldCupBetServiceExceptionException;
 import br.com.worldcupbet.soapworldcupbet.ws.WorldCupBetServiceStub;
 
-public class SoapWorldCupBetTest {
-
-	@Test
-	public void testGetBets() {
+public class SoapWorldCupBetClient {
+	
+	public Bet[] testGetBets() {
 
 		WorldCupBetServiceStub stub = null;
 		try {
 			stub = new WorldCupBetServiceStub();
 		} catch (AxisFault e) {
 			e.printStackTrace();
-			Assert.fail();
 		}
-
-		Assert.assertNotNull(stub);
 
 		GetBetsDocument requestDoc = GetBetsDocument.Factory.newInstance();
 		GetBets request = GetBets.Factory.newInstance();
@@ -47,49 +45,29 @@ public class SoapWorldCupBetTest {
 			responseDoc = stub.getBets(requestDoc);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			Assert.fail();
 		}
-
-		Assert.assertNotNull(responseDoc);
-
+		
 		GetBetsResponse response = responseDoc.getGetBetsResponse();
 
-		Assert.assertNotNull(response);
+		Bet[] bets = response.getReturnArray();
 
-		Bet[] result = response.getReturnArray();
-
-		Assert.assertNotNull(result);
-		Assert.assertTrue(result.length > 0);
-
-		for (Bet b : result) {
-			System.out.println(b.getPunterName() + " bets " + b.getBetValue() + " buks in " + b.getTeamOnWhichBet());
-		}
+		return bets;
 	}
 
 	
-	@Test
-	public void testAddBet() {
+	public void AddBet(Bet bet) {
 		
 		WorldCupBetServiceStub stub = null;
 		try {
 			stub = new WorldCupBetServiceStub();
 		} catch (AxisFault e) {
-			e.printStackTrace();
-			Assert.fail();
-		}
-
-		Assert.assertNotNull(stub);
+			e.printStackTrace();		}
 
 		AddBetDocument requestDoc = AddBetDocument.Factory.newInstance();
 
 		AddBet request = AddBet.Factory.newInstance();
-
-		Bet newBet = Bet.Factory.newInstance();
-		newBet.setPunterName("Camila");
-		newBet.setBetValue(1030);
-		newBet.setTeamOnWhichBet("Irâ");
-
-		request.setBet(newBet);
+		
+		request.setBet(bet);
 
 		requestDoc.setAddBet(request);
 
@@ -97,30 +75,73 @@ public class SoapWorldCupBetTest {
 			stub.addBet(requestDoc);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			Assert.fail();
 		}
-		
-		Assert.assertTrue(true);
 	}
 	
-	@Test
-	public void testGetBetByPunterName() {
+	public void deleteBet(String punterName) {
+		
+		WorldCupBetServiceStub stub = null;
+		try {
+			stub = new WorldCupBetServiceStub();
+		} catch (AxisFault e) {
+			e.printStackTrace();		}
+
+		DeleteDocument requestDoc = DeleteDocument.Factory.newInstance();
+		
+		Delete request = Delete.Factory.newInstance();
+
+
+		request.setPunterName(punterName);
+
+		requestDoc.setDelete(request);
+
+		try {
+			stub.delete(requestDoc);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (WorldCupBetServiceExceptionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+public void updateBet(Bet bet) throws WorldCupBetServiceExceptionException {
+		
+		WorldCupBetServiceStub stub = null;
+		try {
+			stub = new WorldCupBetServiceStub();
+		} catch (AxisFault e) {
+			e.printStackTrace();		}
+
+		UpdateBetDocument requestDoc = UpdateBetDocument.Factory.newInstance();
+		
+		UpdateBet request = UpdateBet.Factory.newInstance();
+		
+		request.setBet(bet);
+
+		requestDoc.setUpdateBet(request);
+
+		try {
+			stub.updateBet(requestDoc);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Bet getBetByPunterName(String name) {
 		
 		WorldCupBetServiceStub stub = null;
 		try {
 			stub = new WorldCupBetServiceStub();
 		} catch (AxisFault e) {
 			e.printStackTrace();
-			Assert.fail();
 		}
-
-		Assert.assertNotNull(stub);
 
 		GetByPunterNameDocument requestDoc = GetByPunterNameDocument.Factory.newInstance();
 		
 		GetByPunterName request = GetByPunterName.Factory.newInstance();
 		
-		request.setPunterName("Dickson");
+		request.setPunterName(name);
 		
 		requestDoc.setGetByPunterName(request);
 		
@@ -129,19 +150,12 @@ public class SoapWorldCupBetTest {
 			responseDoc = stub.getByPunterName(requestDoc);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			Assert.fail();
 		}
-		
-		Assert.assertNotNull(responseDoc);
-		
 		GetByPunterNameResponse response = responseDoc.getGetByPunterNameResponse();
+				
+		Bet bet = response.getReturn();
 		
-		Assert.assertNotNull(response);
+		return bet;
 		
-		Bet result = response.getReturn();
-		
-		Assert.assertNotNull(result);
-		
-		Assert.assertTrue(result.getPunterName().equals("Dickson"));
 	}
 }
