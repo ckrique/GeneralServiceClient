@@ -16,7 +16,7 @@ package br.com.correios.bsb.sigep.master.bean.cliente;
 public interface PesquisarDimensoesServicoResponse extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(PesquisarDimensoesServicoResponse.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s8AE111D981C96D520F862962551646CA").resolveHandle("pesquisardimensoesservicoresponsef074type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(PesquisarDimensoesServicoResponse.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sE691E6D0F7AD129CBDCC7B3C09AD22B2").resolveHandle("pesquisardimensoesservicoresponsef074type");
     
     /**
      * Gets the "return" element

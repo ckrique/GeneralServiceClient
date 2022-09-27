@@ -16,7 +16,7 @@ package org.xmlsoap.schemas.soap.encoding;
 public interface IDREF extends org.apache.xmlbeans.XmlIDREF
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(IDREF.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s8AE111D981C96D520F862962551646CA").resolveHandle("idrefa34ctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(IDREF.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sE691E6D0F7AD129CBDCC7B3C09AD22B2").resolveHandle("idrefa34ctype");
     
     /**
      * Gets the "id" attribute

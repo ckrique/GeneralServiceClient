@@ -17,7 +17,7 @@ package br.com.correios.bsb.sigep.master.bean.cliente;
 public interface BuscaServicosXServicosAdicionaisDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BuscaServicosXServicosAdicionaisDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s8AE111D981C96D520F862962551646CA").resolveHandle("buscaservicosxservicosadicionaisae6edoctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BuscaServicosXServicosAdicionaisDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sE691E6D0F7AD129CBDCC7B3C09AD22B2").resolveHandle("buscaservicosxservicosadicionaisae6edoctype");
     
     /**
      * Gets the "buscaServicosXServicosAdicionais" element

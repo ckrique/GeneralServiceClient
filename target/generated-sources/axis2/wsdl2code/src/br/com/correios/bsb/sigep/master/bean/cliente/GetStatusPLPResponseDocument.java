@@ -17,7 +17,7 @@ package br.com.correios.bsb.sigep.master.bean.cliente;
 public interface GetStatusPLPResponseDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GetStatusPLPResponseDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s8AE111D981C96D520F862962551646CA").resolveHandle("getstatusplpresponsee3a1doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GetStatusPLPResponseDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sE691E6D0F7AD129CBDCC7B3C09AD22B2").resolveHandle("getstatusplpresponsee3a1doctype");
     
     /**
      * Gets the "getStatusPLPResponse" element

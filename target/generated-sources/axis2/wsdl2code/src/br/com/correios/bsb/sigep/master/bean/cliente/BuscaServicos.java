@@ -16,7 +16,7 @@ package br.com.correios.bsb.sigep.master.bean.cliente;
 public interface BuscaServicos extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BuscaServicos.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s8AE111D981C96D520F862962551646CA").resolveHandle("buscaservicos35e4type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(BuscaServicos.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sE691E6D0F7AD129CBDCC7B3C09AD22B2").resolveHandle("buscaservicos35e4type");
     
     /**
      * Gets the "idContrato" element

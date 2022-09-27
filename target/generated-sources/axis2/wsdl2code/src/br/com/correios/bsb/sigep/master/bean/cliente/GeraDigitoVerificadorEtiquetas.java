@@ -16,7 +16,7 @@ package br.com.correios.bsb.sigep.master.bean.cliente;
 public interface GeraDigitoVerificadorEtiquetas extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GeraDigitoVerificadorEtiquetas.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s8AE111D981C96D520F862962551646CA").resolveHandle("geradigitoverificadoretiquetas9092type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(GeraDigitoVerificadorEtiquetas.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sE691E6D0F7AD129CBDCC7B3C09AD22B2").resolveHandle("geradigitoverificadoretiquetas9092type");
     
     /**
      * Gets array of all "etiquetas" elements

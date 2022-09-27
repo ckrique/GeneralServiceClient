@@ -16,7 +16,7 @@ package br.com.correios.bsb.sigep.master.bean.cliente;
 public interface ValidaEtiquetaPLP extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ValidaEtiquetaPLP.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s8AE111D981C96D520F862962551646CA").resolveHandle("validaetiquetaplp23adtype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ValidaEtiquetaPLP.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sE691E6D0F7AD129CBDCC7B3C09AD22B2").resolveHandle("validaetiquetaplp23adtype");
     
     /**
      * Gets the "numeroEtiqueta" element
